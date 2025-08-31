@@ -48,23 +48,24 @@ function App() {
   return (
     <>
       <div className="container mt-4">
-        <div className='app'>
-          <h1>Lista Articoli</h1>
+        <div className="card shadow p-4" >
+          <h1 className='mb-4 text-center'>Lista Articoli</h1>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='d-flex gap-2 mb-4'>
             <input
               type="text"
               value={nuovoTitolo}
               onChange={(e) => setNuovoTitolo(e.target.value)}
               placeholder='Inserisci titolo...' />
-            <button type='submit'>Aggiungi</button>
+            <button type='submit' className='btn btn-primary'>Aggiungi</button>
           </form>
 
-          <ul>
+
+          <ul className='list-group'>
             {articoli.map((articolo) => (
-              <li key={articolo.id}>
+              <li key={articolo.id} className='list-group-item d-flex justify-content-between align-items-center'>
                 {articolo.title}
-                <button onClick={() => setArticoli(articoli.filter(a => a.id !== articolo.id))}> X</button>
+                <button className='btn btn-outline-danger btn-sm' onClick={() => setArticoli(articoli.filter(a => a.id !== articolo.id))}> X</button>
               </li>
             ))}
           </ul>
