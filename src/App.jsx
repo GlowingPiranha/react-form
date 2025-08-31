@@ -35,7 +35,8 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!nuovoTitolo) return;
-    const nuovoTitolo = {
+
+    const nuovoArticolo = {
       id: articoli.length + 1,
       title: nuovoTitolo,
       company: "unknown"
@@ -46,13 +47,28 @@ function App() {
 
   return (
     <>
-      <div className='app'>
-        <h1>Lista Articoli</h1>
-        <ul>
-          {articoli.map((articolo) => (
-            <li key={articolo.id}>{articolo.title}</li>
-          ))}
-        </ul>
+      <div className="container mt-4">
+        <div className='app'>
+          <h1>Lista Articoli</h1>
+
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={nuovoTitolo}
+              onChange={(e) => setNuovoTitolo(e.target.value)}
+              placeholder='Inserisci titolo...' />
+            <button type='submit'>Aggiungi</button>
+          </form>
+
+          <ul>
+            {articoli.map((articolo) => (
+              <li key={articolo.id}>
+                {articolo.title}
+                <button onClick={() => setArticoli(articoli.filter(a => a.id !== articolo.id))}> X</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   );
