@@ -46,9 +46,16 @@ function App() {
 
   return (
     <>
-
+      <div className='app'>
+        <h1>Lista Articoli</h1>
+        <ul>
+          {articoli.map((articolo) => (
+            <li key={articolo.id}>{articolo.title}</li>
+          ))}
+        </ul>
+      </div>
     </>
-  )
+  );
 }
 
 export default App
