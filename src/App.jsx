@@ -37,7 +37,7 @@ function App() {
     if (!nuovoTitolo) return;
 
     const nuovoArticolo = {
-      id: articoli.length + 1,
+      id: articoli[articoli.length - 1].id + 1,
       title: nuovoTitolo,
       company: "unknown"
     };
